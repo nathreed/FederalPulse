@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FPDocument" representedClassName="FPDocument" syncable="YES" codeGenerationType="class">
+        <attribute name="abstract" optional="YES" attributeType="String"/>
+        <attribute name="agencies" optional="YES" attributeType="String"/>
+        <attribute name="backlog" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="frDocID" optional="YES" attributeType="String"/>
+        <attribute name="pubDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="textURL" optional="YES" attributeType="URI"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <fetchRequest name="BacklogFetchRequest" entity="FPDocument" predicateString="backlog == 1"/>
+    <fetchRequest name="FavoritesFetchRequest" entity="FPDocument" predicateString="favorite == 1"/>
+    <elements>
+        <element name="FPDocument" positionX="-63" positionY="-18" width="128" height="149"/>
+    </elements>
 </model>
