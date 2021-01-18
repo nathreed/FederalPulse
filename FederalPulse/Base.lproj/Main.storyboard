@@ -83,13 +83,13 @@
                                 <rect key="frame" x="16" y="96" width="382" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-YG-fVy">
-                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-8o-aSJ">
-                                        <rect key="frame" x="114" y="0.0" width="268" height="50"/>
+                                        <rect key="frame" x="113" y="0.0" width="269" height="50"/>
                                         <connections>
                                             <action selector="dateChanged:" destination="qLQ-hC-HyY" eventType="valueChanged" id="f1t-P6-GWk"/>
                                         </connections>
@@ -129,16 +129,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xps-op-OTc">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xps-op-OTc" id="ce8-Bo-5Xg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="C2C-P2-1Aq" id="ZhX-zP-yF2"/>
                             <outlet property="delegate" destination="C2C-P2-1Aq" id="l0q-YE-A8O"/>

@@ -7,9 +7,16 @@
 
 import UIKit
 
+enum DocumentListRole {
+    case frCategory
+    case backlog
+    case favorites
+}
+
 class DocumentListTableViewController: UITableViewController {
     
     var documentModel: DocumentList?
+    var role: DocumentListRole?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,30 +27,81 @@ class DocumentListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        let nib = UINib(nibName: "DocumentTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "docCell")
         
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.documentModel?.documents.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "docCell", for: indexPath) as! DocumentTableViewCell
 
-        // Configure the cell...
+        cell.titleLabel.text = self.documentModel!.documents[indexPath.row].title
+        cell.agenciesLabel.text = self.documentModel!.documents[indexPath.row].agencies
+        
+        let isBacklog = self.documentModel!.documents[indexPath.row].backlog
+        let isFavorite = self.documentModel!.documents[indexPath.row].favorite
+        
+        //Set up the button based on what role we are in
+        switch(role) {
+        case .none:
+            fatalError()
+        case .backlog:
+            //remove from backlog and favorite/unfavorite buttons to set up
+            //We KNOW it's in the backlog
+            cell.backlogOnlyButton.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            cell.backlogOnlyButton.addTarget(self, action: #selector(backlogTapped), for: .touchUpInside)
+            if(isFavorite) {
+                cell.multiUseButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                cell.multiUseButton.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+            cell.multiUseButton.addTarget(self, action: #selector(favoritesTapped), for: .touchUpInside)
+        case .favorites:
+            //just a favorite/unfavorite
+            //star/star.fill
+            cell.backlogOnlyButton.isHidden = true
+            //Since we are in favorites and we are doing cellForRow, we KNOW it must be a favorite
+            cell.multiUseButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.multiUseButton.addTarget(self, action: #selector(favoritesTapped), for: .touchUpInside)
+        case .frCategory:
+            //just an add/remove to/from backlog
+            //plus.square.fill/minus.square.fill
+            cell.backlogOnlyButton.isHidden = true
+            if(isBacklog) {
+                cell.multiUseButton.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            } else {
+                cell.multiUseButton.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+            }
+            cell.multiUseButton.addTarget(self, action: #selector(backlogTapped), for: .touchUpInside)
+        
+        }
 
         return cell
     }
-    */
+    
+    @objc func favoritesTapped() {
+        print("favorites!")
+    }
+    
+    @objc func backlogTapped() {
+        print("backlog!")
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

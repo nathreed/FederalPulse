@@ -38,6 +38,7 @@ class FRBrowserCategoryTableViewController: DocumentListTableViewController {
             }
         }
         model.refresh()
+        self.documentModel = model
         
     }
 

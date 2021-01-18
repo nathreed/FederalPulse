@@ -69,7 +69,7 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
         self.docID = try container.decode(String.self, forKey: .document_number)
         //Create an agencies string by decoding the array, string representation, except without the brackets
         let agencyArr = try container.decode([String].self, forKey: .agency_names)
-        self.agencies = agencyArr.joined(separator: ",")
+        self.agencies = agencyArr.joined(separator: ", ")
         //Similar approach for the URL - just decode the string first
         let urlText = try container.decode(String.self, forKey: .raw_text_url)
         self.textURL = URL(string: urlText)

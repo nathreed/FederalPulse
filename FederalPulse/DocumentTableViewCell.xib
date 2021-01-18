@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="docCell" id="KGk-i7-Jjw" customClass="DocumentTableViewCell" customModule="FederalPulse" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="293" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long potentially multi line document title hello there going onto a third line here we go" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGJ-JP-p6N">
+                        <rect key="frame" x="6" y="6" width="281" height="47"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencies involved go here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-uJ-Oqs">
+                        <rect key="frame" x="6" y="68" width="237" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOc-OQ-aqg">
+                        <rect key="frame" x="265" y="62" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="J36-9d-ehr"/>
+                            <constraint firstAttribute="width" constant="22" id="Rid-TP-Yvq"/>
+                        </constraints>
+                        <state key="normal" image="star" catalog="system"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs8-CC-O1X">
+                        <rect key="frame" x="243" y="62" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="BNe-fH-mqa"/>
+                            <constraint firstAttribute="height" constant="22" id="WU1-Ra-xyT"/>
+                        </constraints>
+                        <state key="normal" image="star" catalog="system"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zKX-uJ-Oqs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="4uk-KN-0vW"/>
+                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="AH4-PA-Hzf"/>
+                    <constraint firstAttribute="bottom" secondItem="eOc-OQ-aqg" secondAttribute="bottom" constant="16" id="Aex-OV-Fww"/>
+                    <constraint firstAttribute="trailing" secondItem="DGJ-JP-p6N" secondAttribute="trailing" constant="6" id="MjS-WS-5vf"/>
+                    <constraint firstItem="eOc-OQ-aqg" firstAttribute="leading" secondItem="rs8-CC-O1X" secondAttribute="trailing" id="QZQ-Df-nD9"/>
+                    <constraint firstAttribute="trailing" secondItem="eOc-OQ-aqg" secondAttribute="trailing" constant="6" id="cuG-33-wTQ"/>
+                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="gdV-aK-ilS"/>
+                    <constraint firstItem="rs8-CC-O1X" firstAttribute="leading" secondItem="zKX-uJ-Oqs" secondAttribute="trailing" id="iI7-O7-DoF"/>
+                    <constraint firstAttribute="bottom" secondItem="zKX-uJ-Oqs" secondAttribute="bottom" constant="16" id="sto-xz-b0h"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="rs8-CC-O1X" secondAttribute="bottom" constant="5" id="wEU-3D-pWZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="agenciesLabel" destination="zKX-uJ-Oqs" id="UUl-YZ-bxg"/>
+                <outlet property="backlogOnlyButton" destination="rs8-CC-O1X" id="gXL-kc-StC"/>
+                <outlet property="multiUseButton" destination="eOc-OQ-aqg" id="8tQ-FX-Fkb"/>
+                <outlet property="titleLabel" destination="DGJ-JP-p6N" id="U71-jd-Naw"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
+</document>

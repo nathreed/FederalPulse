@@ -70,6 +70,7 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dest = segue.destination as! FRBrowserCategoryTableViewController
+        dest.role = .frCategory
         let config = sender as! FRAPIDocumentListConfiguration
         dest.config = config
     }

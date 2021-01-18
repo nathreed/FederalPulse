@@ -24,6 +24,8 @@
 		D87420D925B62A59000CF0D0 /* FRAPIDocumentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420D825B62A59000CF0D0 /* FRAPIDocumentList.swift */; };
 		D87420E025B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */; };
 		D87420E325B63B12000CF0D0 /* FRBrowserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */; };
+		D87420E725B64368000CF0D0 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420E525B64368000CF0D0 /* DocumentTableViewCell.swift */; };
+		D87420E825B64368000CF0D0 /* DocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87420E625B64368000CF0D0 /* DocumentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		D87420D825B62A59000CF0D0 /* FRAPIDocumentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAPIDocumentList.swift; sourceTree = "<group>"; };
 		D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBrowserCategoryTableViewController.swift; sourceTree = "<group>"; };
 		D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBrowserTableViewCell.swift; sourceTree = "<group>"; };
+		D87420E525B64368000CF0D0 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
+		D87420E625B64368000CF0D0 /* DocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				D87420B625B60E02000CF0D0 /* Info.plist */,
 				D87420AE25B60DFC000CF0D0 /* FederalPulse.xcdatamodeld */,
 				D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */,
+				D87420E525B64368000CF0D0 /* DocumentTableViewCell.swift */,
+				D87420E625B64368000CF0D0 /* DocumentTableViewCell.xib */,
 			);
 			path = FederalPulse;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87420E825B64368000CF0D0 /* DocumentTableViewCell.xib in Resources */,
 				D87420B525B60E02000CF0D0 /* LaunchScreen.storyboard in Resources */,
 				D87420B225B60E02000CF0D0 /* Assets.xcassets in Resources */,
 				D87420AD25B60DFC000CF0D0 /* Main.storyboard in Resources */,
@@ -187,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87420C725B612C2000CF0D0 /* DocumentList.swift in Sources */,
+				D87420E725B64368000CF0D0 /* DocumentTableViewCell.swift in Sources */,
 				D87420B025B60DFC000CF0D0 /* FederalPulse.xcdatamodeld in Sources */,
 				D87420D025B61570000CF0D0 /* APIParsedDocument.swift in Sources */,
 				D87420D325B61A73000CF0D0 /* Backlog.swift in Sources */,
