@@ -9,13 +9,13 @@ import Foundation
 
 //Used for decoding document objects directly from the FR API response
 //As well as providing conversion facilities to save favorite/backlog status
-class APIParsedDocument: Document, Decodable {
+class APIParsedDocument: Document, Decodable, CustomStringConvertible {
     var title: String
     var abstract: String
     var agencies: String
     var docID: String
     var textURL: URL?
-    //TODO: didSet and conversion to a CD entity at this point (and associated bookkeeping)
+    
     var favorite: Bool {
         didSet {
             if self.storedDoc == nil {
@@ -64,7 +64,8 @@ class APIParsedDocument: Document, Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.title = try container.decode(String.self, forKey: .title)
-        self.abstract = try container.decode(String.self, forKey: .abstract)
+        //self.abstract = try container.decode(String.self, forKey: .abstract)
+        self.abstract = try container.decodeIfPresent(String.self, forKey: .abstract) ?? "(no abstract)"
         self.docID = try container.decode(String.self, forKey: .document_number)
         //Create an agencies string by decoding the array, string representation, except without the brackets
         let agencyArr = try container.decode([String].self, forKey: .agency_names)
@@ -75,6 +76,12 @@ class APIParsedDocument: Document, Decodable {
         
         self.favorite = false
         self.backlog = false
+    }
+    
+    var description: String {
+        get {
+            return self.title
+        }
     }
     
     
