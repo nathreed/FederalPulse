@@ -19,8 +19,8 @@ enum FRAPIDocumentType: String {
 struct FRAPIDocumentsResponse: Decodable {
     let count: Int
     let description: String
-    let total_pages: Int
-    let results: [APIParsedDocument]
+    let total_pages: Int?
+    let results: [APIParsedDocument]?
 }
 
 struct FRAPIDocumentListConfiguration {
@@ -67,7 +67,7 @@ class FRAPIDocumentList: DocumentList {
             let result = try decoder.decode(FRAPIDocumentsResponse.self, from: data)
             //Grab the documents list from the result and make it our documents list
             //Then update the status and send the callback
-            self._documents = result.results
+            self._documents = result.results ?? [APIParsedDocument]()
             self._state = .ready
             self.loadingDoneCallback?()
         } catch {

@@ -21,6 +21,9 @@
 		D87420D025B61570000CF0D0 /* APIParsedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420CF25B61570000CF0D0 /* APIParsedDocument.swift */; };
 		D87420D325B61A73000CF0D0 /* Backlog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420D225B61A73000CF0D0 /* Backlog.swift */; };
 		D87420D625B620F3000CF0D0 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420D525B620F3000CF0D0 /* Favorites.swift */; };
+		D87420D925B62A59000CF0D0 /* FRAPIDocumentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420D825B62A59000CF0D0 /* FRAPIDocumentList.swift */; };
+		D87420E025B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */; };
+		D87420E325B63B12000CF0D0 /* FRBrowserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		D87420CF25B61570000CF0D0 /* APIParsedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIParsedDocument.swift; sourceTree = "<group>"; };
 		D87420D225B61A73000CF0D0 /* Backlog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backlog.swift; sourceTree = "<group>"; };
 		D87420D525B620F3000CF0D0 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		D87420D825B62A59000CF0D0 /* FRAPIDocumentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRAPIDocumentList.swift; sourceTree = "<group>"; };
+		D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBrowserCategoryTableViewController.swift; sourceTree = "<group>"; };
+		D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBrowserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 				D87420B325B60E02000CF0D0 /* LaunchScreen.storyboard */,
 				D87420B625B60E02000CF0D0 /* Info.plist */,
 				D87420AE25B60DFC000CF0D0 /* FederalPulse.xcdatamodeld */,
+				D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */,
 			);
 			path = FederalPulse;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 			children = (
 				D87420C025B611FF000CF0D0 /* FRBrowserViewController.swift */,
 				D87420C325B6123A000CF0D0 /* DocumentListTableViewController.swift */,
+				D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 				D87420CC25B61560000CF0D0 /* CoreDataStoredDocument.swift */,
 				D87420CF25B61570000CF0D0 /* APIParsedDocument.swift */,
 				D87420D525B620F3000CF0D0 /* Favorites.swift */,
+				D87420D825B62A59000CF0D0 /* FRAPIDocumentList.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -188,6 +197,9 @@
 				D87420C425B6123A000CF0D0 /* DocumentListTableViewController.swift in Sources */,
 				D87420CA25B61555000CF0D0 /* Document.swift in Sources */,
 				D87420C125B611FF000CF0D0 /* FRBrowserViewController.swift in Sources */,
+				D87420E025B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift in Sources */,
+				D87420E325B63B12000CF0D0 /* FRBrowserTableViewCell.swift in Sources */,
+				D87420D925B62A59000CF0D0 /* FRAPIDocumentList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
