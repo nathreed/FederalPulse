@@ -18,6 +18,8 @@ class DocumentListTableViewController: UITableViewController {
     
     var documentModel: DocumentList?
     var role: DocumentListRole?
+    
+    let feedbackGenerator = UISelectionFeedbackGenerator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,8 @@ class DocumentListTableViewController: UITableViewController {
         
         let nib = UINib(nibName: "DocumentTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "docCell")
+        
+        feedbackGenerator.prepare()
         
     }
 
@@ -64,12 +68,12 @@ class DocumentListTableViewController: UITableViewController {
         case .backlog:
             //remove from backlog and favorite/unfavorite buttons to set up
             //We KNOW it's in the backlog
-            cell.backlogOnlyButton.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            cell.backlogOnlyButton.setImage(UIImage(systemName: "minus.square.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             cell.backlogOnlyButton.addTarget(self, action: #selector(backlogTapped), for: .touchUpInside)
             if(isFavorite) {
-                cell.multiUseButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                cell.multiUseButton.setImage(UIImage(systemName: "star.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             } else {
-                cell.multiUseButton.setImage(UIImage(systemName: "star"), for: .normal)
+                cell.multiUseButton.setImage(UIImage(systemName: "star")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             }
             cell.multiUseButton.addTarget(self, action: #selector(favoritesTapped), for: .touchUpInside)
         case .favorites:
@@ -77,16 +81,16 @@ class DocumentListTableViewController: UITableViewController {
             //star/star.fill
             cell.backlogOnlyButton.isHidden = true
             //Since we are in favorites and we are doing cellForRow, we KNOW it must be a favorite
-            cell.multiUseButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            cell.multiUseButton.setImage(UIImage(systemName: "star.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             cell.multiUseButton.addTarget(self, action: #selector(favoritesTapped), for: .touchUpInside)
         case .frCategory:
             //just an add/remove to/from backlog
             //plus.square.fill/minus.square.fill
             cell.backlogOnlyButton.isHidden = true
             if(isBacklog) {
-                cell.multiUseButton.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+                cell.multiUseButton.setImage(UIImage(systemName: "minus.square.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             } else {
-                cell.multiUseButton.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+                cell.multiUseButton.setImage(UIImage(systemName: "plus.square.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             }
             cell.multiUseButton.addTarget(self, action: #selector(backlogTapped), for: .touchUpInside)
         
@@ -110,11 +114,12 @@ class DocumentListTableViewController: UITableViewController {
     
     @objc func favoritesTapped(sender: UIButton) {
         print("favorites!")
+        self.feedbackGenerator.selectionChanged()
         let touchPoint = sender.convert(CGPoint.zero, to: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: touchPoint)!
         if(self.documentModel!.documents[indexPath.row].favorite) {
             //Already is a favorite, we should de-favorite it
-            sender.setImage(UIImage(systemName: "star"), for: .normal)
+            sender.setImage(UIImage(systemName: "star")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             //HACKY, looks like we can't assign to it because regular documents is get only
             self.documentModel!._documents[indexPath.row].favorite = false
             if(self.role == .some(.favorites)) {
@@ -122,18 +127,19 @@ class DocumentListTableViewController: UITableViewController {
             }
         } else {
             //Is not a favorite, we should favorite it
-            sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            sender.setImage(UIImage(systemName: "star.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             self.documentModel!._documents[indexPath.row].favorite = true
         }
     }
     
     @objc func backlogTapped(sender: UIButton) {
         print("backlog!")
+        self.feedbackGenerator.selectionChanged()
         let touchPoint = sender.convert(CGPoint.zero, to: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: touchPoint)!
         if(self.documentModel!.documents[indexPath.row].backlog) {
             //Already in backlog, remove
-            sender.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+            sender.setImage(UIImage(systemName: "plus.square.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             print("setting false")
             self.documentModel!._documents[indexPath.row].backlog = false
             if(self.role == .some(.backlog)) {
@@ -142,7 +148,7 @@ class DocumentListTableViewController: UITableViewController {
             }
         } else {
             //Add to backlog
-            sender.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            sender.setImage(UIImage(systemName: "minus.square.fill")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             print("setting true")
             self.documentModel!._documents[indexPath.row].backlog = true
         }
