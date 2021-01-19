@@ -26,6 +26,8 @@
 		D87420E325B63B12000CF0D0 /* FRBrowserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */; };
 		D87420E725B64368000CF0D0 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420E525B64368000CF0D0 /* DocumentTableViewCell.swift */; };
 		D87420E825B64368000CF0D0 /* DocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87420E625B64368000CF0D0 /* DocumentTableViewCell.xib */; };
+		D87420EF25B65E82000CF0D0 /* BacklogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420EE25B65E82000CF0D0 /* BacklogTableViewController.swift */; };
+		D87420F225B65E8E000CF0D0 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87420F125B65E8E000CF0D0 /* FavoritesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		D87420E225B63B12000CF0D0 /* FRBrowserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRBrowserTableViewCell.swift; sourceTree = "<group>"; };
 		D87420E525B64368000CF0D0 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		D87420E625B64368000CF0D0 /* DocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTableViewCell.xib; sourceTree = "<group>"; };
+		D87420EE25B65E82000CF0D0 /* BacklogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacklogTableViewController.swift; sourceTree = "<group>"; };
+		D87420F125B65E8E000CF0D0 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				D87420C025B611FF000CF0D0 /* FRBrowserViewController.swift */,
 				D87420C325B6123A000CF0D0 /* DocumentListTableViewController.swift */,
 				D87420DF25B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift */,
+				D87420EE25B65E82000CF0D0 /* BacklogTableViewController.swift */,
+				D87420F125B65E8E000CF0D0 /* FavoritesTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -197,12 +203,14 @@
 				D87420E725B64368000CF0D0 /* DocumentTableViewCell.swift in Sources */,
 				D87420B025B60DFC000CF0D0 /* FederalPulse.xcdatamodeld in Sources */,
 				D87420D025B61570000CF0D0 /* APIParsedDocument.swift in Sources */,
+				D87420F225B65E8E000CF0D0 /* FavoritesTableViewController.swift in Sources */,
 				D87420D325B61A73000CF0D0 /* Backlog.swift in Sources */,
 				D87420CD25B61560000CF0D0 /* CoreDataStoredDocument.swift in Sources */,
 				D87420D625B620F3000CF0D0 /* Favorites.swift in Sources */,
 				D87420A625B60DFC000CF0D0 /* AppDelegate.swift in Sources */,
 				D87420A825B60DFC000CF0D0 /* SceneDelegate.swift in Sources */,
 				D87420C425B6123A000CF0D0 /* DocumentListTableViewController.swift in Sources */,
+				D87420EF25B65E82000CF0D0 /* BacklogTableViewController.swift in Sources */,
 				D87420CA25B61555000CF0D0 /* Document.swift in Sources */,
 				D87420C125B611FF000CF0D0 /* FRBrowserViewController.swift in Sources */,
 				D87420E025B6325A000CF0D0 /* FRBrowserCategoryTableViewController.swift in Sources */,

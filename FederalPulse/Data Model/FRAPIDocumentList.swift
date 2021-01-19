@@ -49,7 +49,7 @@ class FRAPIDocumentList: DocumentList {
         let dateString = dateFormatter.string(from: self.searchDate!)
         
         
-        let apiURL = "https://www.federalregister.gov/api/v1/documents.json?fields%5B%5D=abstract&fields%5B%5D=agency_names&fields%5B%5D=document_number&fields%5B%5D=raw_text_url&fields%5B%5D=title&per_page=500&order=newest&conditions%5Bpublication_date%5D%5Bis%5D=\(dateString)&conditions%5Btype%5D%5B%5D=\(self.docType!.rawValue)"
+        let apiURL = "https://www.federalregister.gov/api/v1/documents.json?fields%5B%5D=abstract&fields%5B%5D=agency_names&fields%5B%5D=document_number&fields%5B%5D=html_url&fields%5B%5D=title&per_page=500&order=newest&conditions%5Bpublication_date%5D%5Bis%5D=\(dateString)&conditions%5Btype%5D%5B%5D=\(self.docType!.rawValue)"
         
         //Fetch the responses
         //This will set the ready state and call the callback so we're done in this refresh method

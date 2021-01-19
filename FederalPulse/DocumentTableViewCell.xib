@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,27 +23,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencies involved go here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-uJ-Oqs">
-                        <rect key="frame" x="6" y="68" width="237" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencies involved go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-uJ-Oqs">
+                        <rect key="frame" x="6" y="68" width="193" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOc-OQ-aqg">
-                        <rect key="frame" x="265" y="62" width="22" height="22"/>
+                        <rect key="frame" x="243" y="40" width="44" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="J36-9d-ehr"/>
-                            <constraint firstAttribute="width" constant="22" id="Rid-TP-Yvq"/>
+                            <constraint firstAttribute="height" constant="44" id="J36-9d-ehr"/>
+                            <constraint firstAttribute="width" constant="44" id="Rid-TP-Yvq"/>
                         </constraints>
-                        <state key="normal" image="star" catalog="system"/>
+                        <state key="normal">
+                            <imageReference key="image" image="star" catalog="system" symbolScale="large"/>
+                        </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs8-CC-O1X">
-                        <rect key="frame" x="243" y="62" width="22" height="22"/>
+                        <rect key="frame" x="199" y="40" width="44" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="BNe-fH-mqa"/>
-                            <constraint firstAttribute="height" constant="22" id="WU1-Ra-xyT"/>
+                            <constraint firstAttribute="width" constant="44" id="BNe-fH-mqa"/>
+                            <constraint firstAttribute="height" constant="44" id="WU1-Ra-xyT"/>
                         </constraints>
-                        <state key="normal" image="star" catalog="system"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal">
+                            <imageReference key="image" image="star" catalog="system" symbolScale="large"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>

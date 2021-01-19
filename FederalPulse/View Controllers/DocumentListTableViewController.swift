@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 enum DocumentListRole {
     case frCategory
@@ -94,12 +95,50 @@ class DocumentListTableViewController: UITableViewController {
         return cell
     }
     
-    @objc func favoritesTapped() {
-        print("favorites!")
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //self.performSegue(withIdentifier: "readDocumentFromCategory", sender: self.documentModel!.documents[indexPath.row])
+        
+        //Configure and present an SFSafariViewController
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = true
+        if let url = self.documentModel!.documents[indexPath.row].textURL {
+            let controller = SFSafariViewController(url: url, configuration: config)
+            self.present(controller, animated: true, completion: nil)
+        }
+        
     }
     
-    @objc func backlogTapped() {
+    @objc func favoritesTapped(sender: UIButton) {
+        print("favorites!")
+        let touchPoint = sender.convert(CGPoint.zero, to: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: touchPoint)!
+        if(self.documentModel!.documents[indexPath.row].favorite) {
+            //Already is a favorite, we should de-favorite it
+            sender.setImage(UIImage(systemName: "star"), for: .normal)
+            //HACKY, looks like we can't assign to it because regular documents is get only
+            self.documentModel!._documents[indexPath.row].favorite = false
+            //TODO: if this VC is a favorites role, delete the row too
+        } else {
+            //Is not a favorite, we should favorite it
+            sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            self.documentModel!._documents[indexPath.row].favorite = true
+        }
+    }
+    
+    @objc func backlogTapped(sender: UIButton) {
         print("backlog!")
+        let touchPoint = sender.convert(CGPoint.zero, to: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: touchPoint)!
+        if(self.documentModel!.documents[indexPath.row].backlog) {
+            //Already in backlog, remove
+            sender.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+            self.documentModel!._documents[indexPath.row].backlog = false
+            //TODO: if this is a backlog role, remove the row
+        } else {
+            //Add to backlog
+            sender.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            self.documentModel!._documents[indexPath.row].backlog = true
+        }
     }
     
 
@@ -138,14 +177,15 @@ class DocumentListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
     }
-    */
+    
 
 }

@@ -24,7 +24,7 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
                 do {
                     self.storedDoc = try CoreDataStoredDocument(document: self)
                 } catch {
-                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument!")
+                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
                 }
             } else {
                 //Just update the favorite property on the stored doc
@@ -39,7 +39,7 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
                 do {
                     self.storedDoc = try CoreDataStoredDocument(document: self)
                 } catch {
-                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument!")
+                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! backlog")
                 }
             } else {
                 //Just update the backlog property on the stored doc
@@ -56,7 +56,7 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
     private enum CodingKeys: String, CodingKey {
         case abstract
         case document_number
-        case raw_text_url
+        case html_url
         case title
         case agency_names
     }
@@ -71,7 +71,7 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
         let agencyArr = try container.decode([String].self, forKey: .agency_names)
         self.agencies = agencyArr.joined(separator: ", ")
         //Similar approach for the URL - just decode the string first
-        let urlText = try container.decode(String.self, forKey: .raw_text_url)
+        let urlText = try container.decode(String.self, forKey: .html_url)
         self.textURL = URL(string: urlText)
         
         self.favorite = false

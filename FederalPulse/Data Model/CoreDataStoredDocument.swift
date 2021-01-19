@@ -78,10 +78,12 @@ class CoreDataStoredDocument: Document {
                 print("Unable to save context with newly added item!")
             }
             self.init(fpDocument: fpDoc)
+        } else {
+            //Throw an error because we have to get out of here
+            //The entity didn't work
+            throw NSError(domain: "com.martianpancake.federalpulse.ErrorDomain", code: 1, userInfo: nil)
         }
-        //Throw an error because we have to get out of here
-        //The entity didn't work
-        throw NSError(domain: "com.martianpancake.federalpulse.ErrorDomain", code: 1, userInfo: nil)
+        
     }
     
     //Delete document entirely - when it's no longer part of the backlog or part of the favorites
