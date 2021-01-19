@@ -41,6 +41,10 @@ class FRBrowserCategoryTableViewController: DocumentListTableViewController {
         self.documentModel = model
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 
 
 }

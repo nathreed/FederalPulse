@@ -132,11 +132,13 @@ class DocumentListTableViewController: UITableViewController {
         if(self.documentModel!.documents[indexPath.row].backlog) {
             //Already in backlog, remove
             sender.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+            print("setting false")
             self.documentModel!._documents[indexPath.row].backlog = false
             //TODO: if this is a backlog role, remove the row
         } else {
             //Add to backlog
             sender.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)
+            print("setting true")
             self.documentModel!._documents[indexPath.row].backlog = true
         }
     }

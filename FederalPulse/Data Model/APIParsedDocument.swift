@@ -10,6 +10,9 @@ import Foundation
 //Used for decoding document objects directly from the FR API response
 //As well as providing conversion facilities to save favorite/backlog status
 class APIParsedDocument: Document, Decodable, CustomStringConvertible {
+    private var _favorite: Bool
+    private var _backlog: Bool
+    
     var title: String
     var abstract: String
     var agencies: String
@@ -17,33 +20,73 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
     var textURL: URL?
     
     var favorite: Bool {
-        didSet {
-            if self.storedDoc == nil {
-                //Initialize a stored document with ourselves
-                //This will grab the new value of favorite in the process
-                do {
-                    self.storedDoc = try CoreDataStoredDocument(document: self)
-                } catch {
-                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
+        get {
+            if let doc = self.storedDoc {
+                return doc.favorite
+            } else {
+                return _favorite
+            }
+        }
+        set {
+            self._favorite = newValue
+            if self.storedDoc == nil || self.storedDoc!.backingDocDeleted {
+                //First try to search by doc ID to see if there's an existing CD doc for us
+                if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
+                    //We found an existing doc, make it our stored doc and update its favorite
+                    self.storedDoc = doc
+                    self.storedDoc?.favorite = newValue
+                } else {
+                    //Initialize a stored document with ourselves
+                    //This will grab the new value of favorite in the process
+                    do {
+                        self.storedDoc = try CoreDataStoredDocument(document: self)
+                    } catch {
+                        print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
+                    }
                 }
+                
             } else {
                 //Just update the favorite property on the stored doc
-                self.storedDoc?.favorite = self.favorite
+                self.storedDoc?.favorite = newValue
             }
         }
     }
     var backlog: Bool {
-        didSet {
-            if self.storedDoc == nil {
-                //Initialize a stored document with ourselves
-                do {
-                    self.storedDoc = try CoreDataStoredDocument(document: self)
-                } catch {
-                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! backlog")
+        get {
+            print("backlog getter!")
+            if let doc = self.storedDoc {
+                //Check if the doc was deleted
+                if(doc.backingDocDeleted) {
+                    print("returning stale info for backlog")
+                }
+                return doc.backlog
+            } else {
+                return _backlog
+            }
+        }
+        set {
+            print("backlog setter!")
+            self._backlog = newValue
+            if self.storedDoc == nil || self.storedDoc!.backingDocDeleted {
+                if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
+                    //We found an existing doc, make it our stored doc and update its favorite
+                    self.storedDoc = doc
+                    self.storedDoc?.backlog = newValue
+                    print("BACKLOG SETTER - FOUND CD STORED DOC BY ID!")
+                } else {
+                    //Initialize a stored document with ourselves
+                    //This will grab the new value of favorite in the process
+                    do {
+                        self.storedDoc = try CoreDataStoredDocument(document: self)
+                    } catch {
+                        print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! backlog")
+                    }
+                    print("BACKLOG SETTER - CREATED NEW CD STORED DOC!")
                 }
             } else {
                 //Just update the backlog property on the stored doc
-                self.storedDoc?.backlog = self.backlog
+                self.storedDoc?.backlog = newValue
+                print("BACKLOG SETTER - SET BACKLOG on STORED DOC!")
             }
         }
     }
@@ -74,8 +117,8 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
         let urlText = try container.decode(String.self, forKey: .html_url)
         self.textURL = URL(string: urlText)
         
-        self.favorite = false
-        self.backlog = false
+        self._favorite = false
+        self._backlog = false
     }
     
     var description: String {

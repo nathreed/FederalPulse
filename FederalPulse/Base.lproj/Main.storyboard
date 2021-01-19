@@ -72,8 +72,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-8o-aSJ">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-8o-aSJ">
                                         <rect key="frame" x="113.5" y="0.0" width="268.5" height="50"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="632438561.76295805">
+                                            <!--2021-01-15 21:22:41 +0000-->
+                                        </date>
                                         <connections>
                                             <action selector="dateChanged:" destination="qLQ-hC-HyY" eventType="valueChanged" id="f1t-P6-GWk"/>
                                         </connections>

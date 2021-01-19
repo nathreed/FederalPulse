@@ -45,6 +45,7 @@ class CoreDataStoredDocument: Document {
     }
     
     var backingFPDoc: FPDocument
+    var backingDocDeleted: Bool
     
     init(fpDocument: FPDocument) {
         self.title = fpDocument.title ?? "(no title)"
@@ -56,6 +57,7 @@ class CoreDataStoredDocument: Document {
         self.backlog = fpDocument.backlog
         
         self.backingFPDoc = fpDocument
+        self.backingDocDeleted = false
     }
     
     
@@ -86,8 +88,29 @@ class CoreDataStoredDocument: Document {
         
     }
     
+    class func searchByDocID(id: String) -> CoreDataStoredDocument? {
+        let context = AppDelegate.cdContext
+        let fetchRequest = NSFetchRequest<FPDocument>(entityName: "FPDocument")
+        fetchRequest.predicate = NSPredicate(format: "frDocID == %@", id)
+        do {
+            let results = try context.fetch(fetchRequest)
+            if(results.count > 0) {
+                return CoreDataStoredDocument(fpDocument: results[0])
+            } else {
+                return nil
+            }
+           
+        } catch {
+            print("unable to search by doc id...")
+            return nil
+        }
+        
+    }
+        
     //Delete document entirely - when it's no longer part of the backlog or part of the favorites
     private func delete() {
+        print("DELETED CD OBJECT!")
+        self.backingDocDeleted = true
         let context = AppDelegate.cdContext
         context.delete(self.backingFPDoc)
         do {
