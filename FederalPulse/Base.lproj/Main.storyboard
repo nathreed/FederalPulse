@@ -34,11 +34,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-nx-ai4">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-nx-ai4">
                                                     <rect key="frame" x="333.5" y="11" width="41.5" height="20.5"/>
-                                                    <color key="backgroundColor" name="AccentColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" name="MaroonColor"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -74,6 +73,7 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-8o-aSJ">
                                         <rect key="frame" x="113.5" y="0.0" width="268.5" height="50"/>
+                                        <color key="tintColor" name="MaroonColor"/>
                                         <connections>
                                             <action selector="dateChanged:" destination="qLQ-hC-HyY" eventType="valueChanged" id="f1t-P6-GWk"/>
                                         </connections>
@@ -132,6 +132,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="MaroonColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="rdt-L1-zJY" kind="relationship" relationship="viewControllers" id="RI7-CO-lRC"/>
@@ -147,7 +148,9 @@
         <scene sceneID="zSQ-ho-yC8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rdt-L1-zJY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="FR Browser" image="book.fill" catalog="system" id="JXg-KC-EXv"/>
+                    <tabBarItem key="tabBarItem" title="FR Browser" image="book.fill" catalog="system" id="JXg-KC-EXv">
+                        <color key="badgeColor" name="MaroonColor"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4F0-fY-nN6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -239,12 +242,13 @@
             <point key="canvasLocation" x="716" y="611"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="MaroonColor"/>
     <resources>
         <image name="book.fill" catalog="system" width="128" height="102"/>
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="MaroonColor">
+            <color red="0.82365200916926062" green="0.19929066100669482" blue="0.10647387277529428" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

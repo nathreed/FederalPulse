@@ -18,14 +18,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long potentially multi line document title hello there going onto a third line here we go" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGJ-JP-p6N">
-                        <rect key="frame" x="6" y="6" width="281" height="47"/>
+                        <rect key="frame" x="16" y="3" width="280" height="47"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencies involved go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-uJ-Oqs">
-                        <rect key="frame" x="6" y="68" width="195" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -50,17 +44,23 @@
                             <imageReference key="image" image="star" catalog="system" symbolScale="large"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agencies involved go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKX-uJ-Oqs">
+                        <rect key="frame" x="16" y="68" width="185" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="eOc-OQ-aqg" secondAttribute="bottom" constant="3" id="3XW-1c-xOR"/>
-                    <constraint firstItem="zKX-uJ-Oqs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="4uk-KN-0vW"/>
+                    <constraint firstItem="zKX-uJ-Oqs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4uk-KN-0vW"/>
                     <constraint firstItem="rs8-CC-O1X" firstAttribute="leading" secondItem="zKX-uJ-Oqs" secondAttribute="trailing" id="5Pl-V1-h7y"/>
-                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="AH4-PA-Hzf"/>
+                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="AH4-PA-Hzf"/>
                     <constraint firstAttribute="trailing" secondItem="eOc-OQ-aqg" secondAttribute="trailing" constant="4" id="CKs-RO-gXB"/>
                     <constraint firstItem="eOc-OQ-aqg" firstAttribute="leading" secondItem="rs8-CC-O1X" secondAttribute="trailing" id="Ihe-R8-eeP"/>
-                    <constraint firstAttribute="trailing" secondItem="DGJ-JP-p6N" secondAttribute="trailing" constant="6" id="MjS-WS-5vf"/>
+                    <constraint firstAttribute="trailing" secondItem="DGJ-JP-p6N" secondAttribute="trailing" constant="-3" id="MjS-WS-5vf"/>
                     <constraint firstAttribute="bottom" secondItem="rs8-CC-O1X" secondAttribute="bottom" constant="2" id="VLz-nT-ro7"/>
-                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="gdV-aK-ilS"/>
+                    <constraint firstItem="DGJ-JP-p6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gdV-aK-ilS"/>
                     <constraint firstAttribute="bottom" secondItem="zKX-uJ-Oqs" secondAttribute="bottom" constant="16" id="sto-xz-b0h"/>
                 </constraints>
             </tableViewCellContentView>

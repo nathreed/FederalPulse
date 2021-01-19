@@ -29,6 +29,8 @@ class FavoritesTableViewController: DocumentListTableViewController {
             }
         }
         self.documentModel = model
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
