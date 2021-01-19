@@ -11,7 +11,7 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    let counts = [999, 999, 999, 999]
+    var counts = [0, 0, 0, 0]
     let titles = ["Notices", "Proposed Rules", "Rules", "Presidential Documents"]
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +23,8 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.title = "Federal Register"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.loadCategoryCounts()
     }
     
     
@@ -61,7 +63,53 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     @IBAction func dateChanged(_ sender: Any) {
-        //TODO: make calls to API to get count of each category
+        self.loadCategoryCounts()
+    }
+    
+    //This function starts API calls to the endpoints to update the counts for each category, which are then filled in by the callback.
+    //Struct is used for receiving the results
+    struct CountAPIDetails: Decodable {
+        var count: Int
+        var name: String
+    }
+    
+    func loadCategoryCounts() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: self.datePicker.date)
+        
+        let baseAPIUrl = "https://www.federalregister.gov/api/v1/documents/facets/daily?conditions%5Bpublication_date%5D%5Bis%5D=\(dateString)&conditions%5Btype%5D%5B%5D="
+        
+        let constants = ["NOTICE", "PRORULE", "RULE", "PRESDOCU"]
+        for i in 0...3 {
+            let taskAPIUrl = baseAPIUrl + constants[i]
+            if let url = URL(string: taskAPIUrl) {
+                let task = URLSession(configuration: .default).dataTask(with: url) { (data, resp, err) in
+                    guard let respData = data else {
+                        print("count errror")
+                        return
+                    }
+                    let decoder = JSONDecoder()
+                    
+                    do {
+                        let results = try decoder.decode([String: CountAPIDetails].self, from: respData)
+                        if let actualCount = results[dateString] {
+                            self.counts[i] = actualCount.count
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                        
+                    } catch {
+                        print("decode error \(error)")
+                    }
+                    
+                }
+                task.resume()
+            }
+            
+        }
     }
     
     

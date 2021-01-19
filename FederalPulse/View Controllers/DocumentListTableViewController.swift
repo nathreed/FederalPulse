@@ -117,7 +117,9 @@ class DocumentListTableViewController: UITableViewController {
             sender.setImage(UIImage(systemName: "star"), for: .normal)
             //HACKY, looks like we can't assign to it because regular documents is get only
             self.documentModel!._documents[indexPath.row].favorite = false
-            //TODO: if this VC is a favorites role, delete the row too
+            if(self.role == .some(.favorites)) {
+                self.documentModel!.refresh()
+            }
         } else {
             //Is not a favorite, we should favorite it
             sender.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -134,7 +136,10 @@ class DocumentListTableViewController: UITableViewController {
             sender.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
             print("setting false")
             self.documentModel!._documents[indexPath.row].backlog = false
-            //TODO: if this is a backlog role, remove the row
+            if(self.role == .some(.backlog)) {
+                //Simply refresh the data model which will cause data reload when ready
+                self.documentModel!.refresh()
+            }
         } else {
             //Add to backlog
             sender.setImage(UIImage(systemName: "minus.square.fill"), for: .normal)

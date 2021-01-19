@@ -21,78 +21,62 @@ class APIParsedDocument: Document, Decodable, CustomStringConvertible {
     
     var favorite: Bool {
         get {
-            if let doc = self.storedDoc {
+            //Try to find a doc with our ID, if there is none then return our cached value
+            if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
                 return doc.favorite
             } else {
-                return _favorite
+                //If it was true, we would have a document created to hold that
+                //Since no such document exists, we know it must be false
+                return false
             }
         }
         set {
             self._favorite = newValue
-            if self.storedDoc == nil || self.storedDoc!.backingDocDeleted {
-                //First try to search by doc ID to see if there's an existing CD doc for us
-                if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
-                    //We found an existing doc, make it our stored doc and update its favorite
-                    self.storedDoc = doc
-                    self.storedDoc?.favorite = newValue
-                } else {
-                    //Initialize a stored document with ourselves
-                    //This will grab the new value of favorite in the process
-                    do {
-                        self.storedDoc = try CoreDataStoredDocument(document: self)
-                    } catch {
-                        print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
-                    }
+            //Find a document by ID of the doc we are trying to update
+            //If one doesn't exist, only create one if we are setting the new value to TRUE
+            if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
+                //Found existing doc, update its favorite
+                doc.favorite = newValue
+            } else if newValue == true {
+                //Only if newValue is true do we bother creating a new doc
+                do {
+                    let doc = try CoreDataStoredDocument(document: self)
+                    doc.favorite = true
+                } catch {
+                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
                 }
                 
-            } else {
-                //Just update the favorite property on the stored doc
-                self.storedDoc?.favorite = newValue
             }
         }
     }
     var backlog: Bool {
         get {
-            print("backlog getter!")
-            if let doc = self.storedDoc {
-                //Check if the doc was deleted
-                if(doc.backingDocDeleted) {
-                    print("returning stale info for backlog")
-                }
+            //Try to find a doc with our ID, if there is none then return our cached value
+            if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
                 return doc.backlog
             } else {
-                return _backlog
+                return false
             }
         }
         set {
-            print("backlog setter!")
             self._backlog = newValue
-            if self.storedDoc == nil || self.storedDoc!.backingDocDeleted {
-                if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
-                    //We found an existing doc, make it our stored doc and update its favorite
-                    self.storedDoc = doc
-                    self.storedDoc?.backlog = newValue
-                    print("BACKLOG SETTER - FOUND CD STORED DOC BY ID!")
-                } else {
-                    //Initialize a stored document with ourselves
-                    //This will grab the new value of favorite in the process
-                    do {
-                        self.storedDoc = try CoreDataStoredDocument(document: self)
-                    } catch {
-                        print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! backlog")
-                    }
-                    print("BACKLOG SETTER - CREATED NEW CD STORED DOC!")
+            //Find a document by ID of the doc we are trying to update
+            //If one doesn't exist, only create one if we are setting the new value to TRUE
+            if let doc = CoreDataStoredDocument.searchByDocID(id: self.docID) {
+                //Found existing doc, update its favorite
+                doc.backlog = newValue
+            } else if newValue == true {
+                //Only if newValue is true do we bother creating a new doc
+                do {
+                    let doc = try CoreDataStoredDocument(document: self)
+                    doc.backlog = true
+                } catch {
+                    print("Unable to initialize CoreDataStoredDocument from APIParsedDocument! favorites")
                 }
-            } else {
-                //Just update the backlog property on the stored doc
-                self.storedDoc?.backlog = newValue
-                print("BACKLOG SETTER - SET BACKLOG on STORED DOC!")
+                
             }
         }
     }
-    
-    //This will be the "backing" CoreDataStoredDocument - it will be populated when the favorite/backlog status is changed
-    var storedDoc: CoreDataStoredDocument?
     
     // MARK: - Codable stuff
     
