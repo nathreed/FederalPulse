@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long potentially multi line document title hello there going onto a third line here we go" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGJ-JP-p6N">
-                        <rect key="frame" x="16" y="3" width="280" height="47"/>
+                        <rect key="frame" x="16" y="3" width="277" height="47"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                     <constraint firstItem="DGJ-JP-p6N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="AH4-PA-Hzf"/>
                     <constraint firstAttribute="trailing" secondItem="eOc-OQ-aqg" secondAttribute="trailing" constant="4" id="CKs-RO-gXB"/>
                     <constraint firstItem="eOc-OQ-aqg" firstAttribute="leading" secondItem="rs8-CC-O1X" secondAttribute="trailing" id="Ihe-R8-eeP"/>
-                    <constraint firstAttribute="trailing" secondItem="DGJ-JP-p6N" secondAttribute="trailing" constant="-3" id="MjS-WS-5vf"/>
+                    <constraint firstAttribute="trailing" secondItem="DGJ-JP-p6N" secondAttribute="trailing" id="MjS-WS-5vf"/>
                     <constraint firstAttribute="bottom" secondItem="rs8-CC-O1X" secondAttribute="bottom" constant="2" id="VLz-nT-ro7"/>
                     <constraint firstItem="DGJ-JP-p6N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gdV-aK-ilS"/>
                     <constraint firstAttribute="bottom" secondItem="zKX-uJ-Oqs" secondAttribute="bottom" constant="16" id="sto-xz-b0h"/>

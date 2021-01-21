@@ -99,6 +99,12 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
                             }
+                        } else {
+                            //No response for that date string, just say 0 available
+                            self.counts[i] = 0
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
                         }
                         
                     } catch {
