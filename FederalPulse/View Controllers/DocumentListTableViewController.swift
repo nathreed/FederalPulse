@@ -123,8 +123,18 @@ class DocumentListTableViewController: UITableViewController {
             sender.setImage(UIImage(systemName: "star")!.applyingSymbolConfiguration(.init(pointSize: 25)), for: .normal)
             //HACKY, looks like we can't assign to it because regular documents is get only
             self.documentModel!._documents[indexPath.row].favorite = false
+            //Remove the row
+            //If the model can do the blocking refresh, do it with a nice remove animation
+            //Otherwise no animation
             if(self.role == .some(.favorites)) {
-                self.documentModel!.refresh()
+                if let model = self.documentModel as? DocumentListBlockingRefresh {
+                    model.blockingRefresh()
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    self.documentModel!.refresh()
+                }
+                
+                
             }
         } else {
             //Is not a favorite, we should favorite it
@@ -145,7 +155,14 @@ class DocumentListTableViewController: UITableViewController {
             self.documentModel!._documents[indexPath.row].backlog = false
             if(self.role == .some(.backlog)) {
                 //Simply refresh the data model which will cause data reload when ready
-                self.documentModel!.refresh()
+                //If the backend model can do blocking refresh, do that and give us a nice delete animation instead
+                if let model = self.documentModel as? DocumentListBlockingRefresh {
+                    model.blockingRefresh()
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    self.documentModel!.refresh()
+                }
+                
             }
         } else {
             //Add to backlog

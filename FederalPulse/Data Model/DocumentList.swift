@@ -12,6 +12,10 @@ enum DocumentListState {
     case ready
 }
 
+protocol DocumentListBlockingRefresh {
+    func blockingRefresh()
+}
+
 //A model for representing a list of documents from the FR API.
 //Can be configured to provide documents from store (favorites/backlog) or API (FR browse)
 //Basically: The proper subclass of this model should be inited with the VC and a callback should be registered for when loading is done
