@@ -107,6 +107,7 @@ class DocumentListTableViewController: UITableViewController {
         config.entersReaderIfAvailable = true
         if let url = self.documentModel!.documents[indexPath.row].textURL {
             let controller = SFSafariViewController(url: url, configuration: config)
+            controller.preferredControlTintColor = UIColor(named: "MaroonColor")
             self.present(controller, animated: true, completion: nil)
         }
         
