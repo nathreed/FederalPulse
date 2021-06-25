@@ -19,7 +19,6 @@ class FRBrowserViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         
         self.title = "Federal Register"
         self.navigationController?.navigationBar.prefersLargeTitles = true

@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    //MARK: - Core Data Conveniences
+    //MARK: - Core Data Convenience
     
     static var persistentContainer: NSPersistentContainer {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer

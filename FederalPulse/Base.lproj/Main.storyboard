@@ -72,7 +72,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-8o-aSJ">
-                                        <rect key="frame" x="113.5" y="0.0" width="268.5" height="50"/>
+                                        <rect key="frame" x="114" y="0.0" width="268" height="50"/>
                                         <color key="tintColor" name="MaroonColor"/>
                                         <connections>
                                             <action selector="dateChanged:" destination="qLQ-hC-HyY" eventType="valueChanged" id="f1t-P6-GWk"/>
@@ -248,7 +248,7 @@
         <image name="rectangle.stack.fill" catalog="system" width="128" height="122"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="MaroonColor">
-            <color red="0.82365200916926062" green="0.19929066100669482" blue="0.10647387277529428" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.82400000095367432" green="0.19900000095367432" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
